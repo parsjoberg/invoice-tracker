@@ -76,7 +76,7 @@ const ErrorLabel = styled.div`
 `
 
 class SignInComponent extends React.Component {
-  
+
   constructor(props) {
     super(props);
 
@@ -95,33 +95,33 @@ class SignInComponent extends React.Component {
   }
 
   handleEmailInputChange(e) {
-    this.setState({email: e.target.value, emailError: ""})
+    this.setState({ email: e.target.value, emailError: "" })
   }
 
   handlePasswordInputChange(e) {
-    this.setState({password: e.target.value, passwordError: ""})
+    this.setState({ password: e.target.value, passwordError: "" })
   }
 
   handleRememberMeInputChange(e) {
-    this.setState({rememberMe: e.target.value})
+    this.setState({ rememberMe: e.target.value })
   }
 
   handleSubmit(e) {
     var emailError = ""
     var passwordError = ""
 
-    if(!this.state.email) {
+    if (!this.state.email) {
       emailError = "Email can't be empty"
     }
 
-    if(!this.state.password) {
-      passwordError = "Password can't be empty" 
+    if (!this.state.password) {
+      passwordError = "Password can't be empty"
     } else if (this.state.password.length < 8) {
-      passwordError = "Password should be at least 8 characters" 
+      passwordError = "Password should be at least 8 characters"
     }
 
-    if(emailError || passwordError) {
-      this.setState({emailError, passwordError})
+    if (emailError || passwordError) {
+      this.setState({ emailError, passwordError })
       e.preventDefault()
     } else {
       alert(JSON.stringify(this.state))
@@ -129,39 +129,39 @@ class SignInComponent extends React.Component {
   }
 
   render() {
-       return (
-        <Container>
-          <ContentContainer>
+    return (
+      <Container>
+        <ContentContainer>
           <Title>{"Sign In"}</Title>
-          
+
           <Form onSubmit={this.handleSubmit}>
             <Label>Email</Label>
-            <EmailInput type="email" 
-                        value={this.state.email} 
-                        onChange={this.handleEmailInputChange}/>
+            <EmailInput type="email"
+              value={this.state.email}
+              onChange={this.handleEmailInputChange} />
 
             {this.state.emailError && <ErrorLabel>{this.state.emailError}</ErrorLabel>}
 
             <Label>Password</Label>
-            <PasswordInput type="password" 
-                           value={this.state.password}
-                           onChange={this.handlePasswordInputChange}/>
+            <PasswordInput type="password"
+              value={this.state.password}
+              onChange={this.handlePasswordInputChange} />
 
             {this.state.passwordError && <ErrorLabel>{this.state.passwordError}</ErrorLabel>}
 
             <CheckboxContainer>
-              <RememberMeCheckbox type="checkbox" 
-                                  checked={this.state.rememberMe}
-                                  onChange={this.handleRememberMeInputChange}/>
+              <RememberMeCheckbox type="checkbox"
+                checked={this.state.rememberMe}
+                onChange={this.handleRememberMeInputChange} />
               <CheckboxLabel>Remember me</CheckboxLabel>
             </CheckboxContainer>
 
-            <SubmitButton type="submit"/>
+            <SubmitButton type="submit" />
           </Form>
-          </ContentContainer>
-        </Container>
-      ); 
-    }
+        </ContentContainer>
+      </Container>
+    );
   }
+}
 
 export default SignInComponent;
